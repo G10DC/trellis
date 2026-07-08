@@ -54,3 +54,22 @@ test('buildSymbolGraph captures inheritance', () => {
   const g = buildSymbolGraph([extractModule('m.js', SRC)], {});
   ok(g.edges.some((e) => e.from === 'm.js::Dog' && e.to === 'm.js::Animal' && e.type === 'inherits'));
 });
+
+test('buildSymbolGraph resolves extension-less imports (./auth -> auth.js)', () => {
+  const AUTH = `export function validateToken(t) { return !!t; }`;
+  const API = `import { validateToken } from './auth';\nexport function handler() { return validateToken(1); }`;
+  const g = buildSymbolGraph([extractModule('src/auth.js', AUTH), extractModule('src/api.js', API)], {});
+  // import edge targets the real file node (auth.js), not the extension-less 'src/auth'
+  ok(g.edges.some((e) => e.from === 'src/api.js' && e.to === 'src/auth.js' && e.type === 'imports'),
+    'extension-less import resolves to auth.js');
+  // cross-file call resolves despite the extension-less import spec
+  ok(g.edges.some((e) => e.from === 'src/api.js::handler' && e.to === 'src/auth.js::validateToken' && e.type === 'calls'),
+    'call to an extension-less-imported symbol resolves cross-file');
+});
+
+test('buildSymbolGraph creates external nodes for bare/builtin imports (node:fs)', () => {
+  const SRC = `import { readFileSync } from 'node:fs';\nexport function loader() { return readFileSync('x'); }`;
+  const g = buildSymbolGraph([extractModule('src/loader.js', SRC)], { externals: [] });
+  ok(g.nodes.has('external:node:fs'), 'builtin import gets an external node (no dangling edge)');
+  ok(g.edges.some((e) => e.from === 'src/loader.js' && e.to === 'external:node:fs' && e.type === 'imports'));
+});
