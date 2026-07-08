@@ -1,0 +1,10 @@
+{
+  "name": "additive change (no existing dependent at risk)",
+  "files": {
+    "src/util.js": "export function existing() { return 1; }"
+  },
+  "edit": { "node": "src/util.js::newFn", "change": "add" },
+  "note": "New symbol; nothing depends on it yet.",
+  "impacted": [],
+  "shouldWarn": false
+}

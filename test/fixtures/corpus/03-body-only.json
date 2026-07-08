@@ -1,0 +1,11 @@
+{
+  "name": "body-only change (correctly low risk)",
+  "files": {
+    "src/auth.js": "export function validate(t) { if (!t) return false; return t.length > 1; }",
+    "src/api.js": "import { validate } from './auth.js';\nexport function handler() { return validate('x'); }"
+  },
+  "edit": { "node": "src/auth.js::validate", "change": "body-only" },
+  "note": "Internals change, contract unchanged; consumers are reachable but not at risk.",
+  "impacted": [],
+  "shouldWarn": false
+}

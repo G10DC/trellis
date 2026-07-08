@@ -1,0 +1,11 @@
+{
+  "name": "signature-preserving semantic change (the adversarial false-negative)",
+  "files": {
+    "src/auth.js": "export function getUser(id) { return db.find(id); }",
+    "src/api.js": "import { getUser } from './auth.js';\nexport function handler() { return getUser(1); }"
+  },
+  "edit": { "node": "src/auth.js::getUser", "change": "body-only" },
+  "note": "getUser now also revokes tokens; signature unchanged. Reachability sees handler, but a body-only verdict says PASS — the real risk is invisible.",
+  "impacted": ["src/api.js::handler"],
+  "shouldWarn": true
+}

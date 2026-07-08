@@ -1,0 +1,11 @@
+{
+  "name": "signature change (correctly high risk)",
+  "files": {
+    "src/auth.js": "export function validate(t) { return !!t; }",
+    "src/api.js": "import { validate } from './auth.js';\nexport function handler() { return validate('x'); }"
+  },
+  "edit": { "node": "src/auth.js::validate", "change": "signature" },
+  "note": "Public contract changed; direct consumer is at risk.",
+  "impacted": ["src/api.js::handler"],
+  "shouldWarn": true
+}
