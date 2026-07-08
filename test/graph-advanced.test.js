@@ -14,7 +14,7 @@ function cyclic() {
 }
 
 test('scc collapses a 3-node cycle into one component', () => {
-  const { components, count } = scc(cyclic());
+  const { components } = scc(cyclic());
   const sizes = components.map((c) => c.length).sort((a, b) => b - a);
   strictEqual(sizes[0], 3); // A,B,C in one SCC
   ok(components.some((c) => c.length === 1 && c[0] === 'D'));

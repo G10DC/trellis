@@ -9,7 +9,7 @@ const VERIFY = join(HERE, '..', 'scripts', 'verify.mjs');
 const SAMPLE = join(HERE, '..', 'test', 'fixtures', 'sample');
 
 function run(args = []) {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     execFile(process.execPath, [VERIFY, ...args], { maxBuffer: 1 << 20 }, (err, stdout, stderr) => {
       resolve({ code: err ? err.code : 0, stdout, stderr });
     });
