@@ -1,0 +1,4 @@
+node_modules/
+.trellis/
+coverage/
+*.log
