@@ -17,24 +17,24 @@
 ```
 - `type` ∈ `defines` | `imports` | `calls` | `references` | `inherits` | `implements` | `instantiates` | `tests` |
   `registered` | `handles`
-- `tier`: 0 regex · 1 manifest · 2 tree-sitter · 3 LLM-inferred · 4 MCP-resolved
+- `tier`: 0 regex · 1 manifest · 2 acorn/AST · 3 LLM-inferred · 4 MCP-resolved
 - `inferred`: true when the edge is by-convention / not statically provable (mandatory for tier 3)
 - `evidence`: `file:line` (+ a short note) — **mandatory unless inferred**; the gate and the audit cite it
 
-## MVP edge inventory (tiers 0–1)
+## Shipped edge inventory (tiers 0–2)
 | type | from → to | tier | source |
 |---|---|---|---|
 | `defines` | file → symbol | 0 | regex `function\|class\|const\|let\|var NAME` |
 | `imports` | file → file | 0 | regex `import … from 'rel'` / `require('rel')` (relative spec resolved) |
 | `imports` | file → `external:<pkg>` | 1 | bare import spec + manifest |
+| `calls` / `references` | symbol → symbol | 2 | acorn AST, cross-file via imports |
+| `inherits` / `implements` / `instantiates` | symbol → symbol | 2 | acorn AST |
 
-## Deferred (Phases 2–3)
+## On-demand / not auto-extracted
 | type | tier | note |
 |---|---|---|
-| `calls` / `references` | 2 | tree-sitter; needed for symbol-level blast radius |
-| `inherits` / `implements` / `instantiates` | 2 | tree-sitter |
-| `tests` | 2/3 | test → symbol |
-| `registered` / `handles` | 3 | LLM: DI, event handlers, routes, dynamic dispatch |
+| `registered` / `handles` | 3 | LLM-inferred via `templates/tier3-extract.md` + `applyLLMEdges` (manual merge) |
+| `tests` | 2/3 | test → symbol (not yet extracted) |
 
 ## Reachability semantics
 - `blastRadius(X)` = reverse BFS = **who depends on X** (what a change to X can break downstream).

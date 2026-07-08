@@ -1,6 +1,6 @@
 ---
 name: trellis
-description: Build a lightweight in-memory dependency graph of a codebase (tier-0 imports + tier-1 manifests; symbol-level calls deferred to tree-sitter) and consult its bidirectional reachability BEFORE editing, so no dependent is missed. Returns a PASS/WARN/BLOCK verdict with confidence and change-type, never claiming reachability equals breakage. Graph-first, LLM-second — the model reasons over proven edges, never invents them. Use proactively before non-trivial edits on medium/large JS/TS codebases, and whenever a change touches shared or exported symbols.
+description: Build a lightweight dependency graph of a codebase (tier-0 imports + tier-1 manifests + tier-2 acorn AST for symbol-level calls) and consult its bidirectional reachability BEFORE editing, so no dependent is missed. Returns a PASS/WARN/BLOCK verdict with confidence and change-type, never claiming reachability equals breakage. Graph-first, LLM-second — the model reasons over proven edges, never invents them. Use proactively before non-trivial edits on medium/large JS/TS codebases, and whenever a change touches shared or exported symbols.
 ---
 
 # Trellis
