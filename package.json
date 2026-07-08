@@ -1,0 +1,21 @@
+{
+  "name": "trellis",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Claude Code skill: dependency graph + pre-edit blast radius. Graph-first, LLM-second; reachability, not breakage — honestly.",
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test \"test/**/*.test.js\"",
+    "smoke": "node scripts/cli.mjs",
+    "precision": "node scripts/precision-study.mjs",
+    "verify": "node scripts/verify.mjs",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0"
+  },
+  "dependencies": {
+    "acorn": "^8.17.0"
+  }
+}
