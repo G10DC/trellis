@@ -1,6 +1,6 @@
 {
   "name": "trellis",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "description": "Claude Code skill: dependency graph + pre-edit blast radius. Graph-first, LLM-second; reachability, not breakage — honestly.",
   "license": "MIT",

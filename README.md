@@ -51,8 +51,8 @@ sever the wrong bond. A hand-tool metaphor for a coding craft.
 - **Phase 3** — semantic refinement: change-type, provenance, LLM implicit edges (tier 3), confidence.
 - **Phase 4** — language breadth + security hardening.
 
-See `ROADMAP.md`, `ARCHITECTURE.md`, `RISKS.md`, `STATE_OF_THE_ART.md`.
+See `ARCHITECTURE.md` and `RISKS.md`.
 
 ## Origin
 The honesty layer and the Phase-0-first roadmap follow from the core limitation: a static graph proves reachability,
-not breakage. See `STATE_OF_THE_ART.md` for references and `RISKS.md` for the load-bearing assumption.
+not breakage. See `RISKS.md` for the load-bearing assumption.

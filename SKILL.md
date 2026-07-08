@@ -20,7 +20,7 @@ symbol without consulting its blast radius, and never trust the graph as proof o
 5. **Act on the verdict, don't just collect it.** WARN/BLOCK ⇒ open the dependents and decide. PASS on a tier-0-only
    graph ⇒ still verify manually; the graph is incomplete.
 6. **Minimal by default.** In-memory, one language family, zero native deps. Persistence and multi-language are
-   Phase 2+ (`ROADMAP.md`).
+   Phase 2+.
 
 ## The pre-edit gate (the whole point)
 ```
