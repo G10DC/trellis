@@ -1,0 +1,10 @@
+{
+  "name": "rename of a private helper (over-report false-positive)",
+  "files": {
+    "src/util.js": "function helper() { return 1; }\nexport function pub() { return helper(); }"
+  },
+  "edit": { "node": "src/util.js::helper", "change": "rename" },
+  "note": "Renaming helper lights up its callers; the graph over-reports and the verdict is WARN (verify each).",
+  "impacted": ["src/util.js::pub"],
+  "shouldWarn": true
+}

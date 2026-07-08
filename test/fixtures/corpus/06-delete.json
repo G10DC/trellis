@@ -1,0 +1,11 @@
+{
+  "name": "delete with dependents (high risk)",
+  "files": {
+    "src/auth.js": "export function validate(t) { return !!t; }",
+    "src/api.js": "import { validate } from './auth.js';\nexport function handler() { return validate('x'); }"
+  },
+  "edit": { "node": "src/auth.js::validate", "change": "delete" },
+  "note": "Removing a node others depend on is high-risk.",
+  "impacted": ["src/api.js::handler"],
+  "shouldWarn": true
+}
