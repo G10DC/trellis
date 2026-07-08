@@ -10,7 +10,7 @@
 
 import { buildGraph } from '../lib/extract.js';
 import {
-  impact, blastRadius, cascade, adjacency, dangling,
+  blastRadius, cascade, adjacency, dangling,
   toJSONL, fromJSONL, stats,
 } from '../lib/graph.js';
 import { gate, CHANGE } from '../lib/gate.js';
