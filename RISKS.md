@@ -25,7 +25,7 @@ If unmitigated, Trellis cries wolf until the user disables it, and the graph bec
 - A **precision study** (Phase 0): measure recall/precision of the reachability set against a corpus of real edits
   *including the adversarial cases* before investing in infrastructure.
 - A **semantic-refinement layer** (Phase 3): change-type metadata attached to the triggering edit; provenance
-  (tree-sitter vs LSP vs LLM) + confidence on every reported node; SCC condensation + depth-bounded closure.
+  (acorn vs LSP vs LLM) + confidence on every reported node; SCC condensation + depth-bounded closure.
 
 ## #2 — Freshness / correctness drift (a single stale edge silently corrupts everything)
 Incremental update (Phase 2) is the linchpin and the fragility: one stale edge makes every downstream answer wrong,
@@ -35,7 +35,7 @@ and the error is **invisible** (queries still return plausible sets).
 provenance/timestamp, a startup reconciliation pass, a `changed`/dangling check, and a clean-rebuild escape hatch.
 
 ## #3 — Over-engineering vs. the minimal counterweight
-The full stack (tree-sitter + LSP + SQLite + content-addressing + tiered invalidation + recursive closure) is a large
+The full stack (acorn + LSP + SQLite + content-addressing + tiered invalidation + recursive closure) is a large
 surface for a skill whose job is "don't edit blind." `@vk0/code-impact-mcp` (zero-database, PASS/WARN/BLOCK) is a
 legitimate challenge: the median case may not need it.
 
@@ -43,8 +43,9 @@ legitimate challenge: the median case may not need it.
 scale, not Phase-1 requirements. The Phase-0 study decides whether the heavy layers ever earn their keep.
 
 ## #4 — Language-coverage inconsistency (structural, not incidental)
-Tree-sitter grammar maturity is bimodal; resolution (`sys.path`, bundler aliases, autoloading, dynamic dispatch) is
-where "full blast radius" lives or dies — and it is invisible to tier 0–2. MVP is JS/TS only.
+AST grammar maturity is bimodal (acorn covers JS/TS; tree-sitter is the planned multi-language path); resolution
+(`sys.path`, bundler aliases, autoloading, dynamic dispatch) is where "full blast radius" lives or dies — and it is
+invisible to tier 0–2. MVP is JS/TS + Python tier-0.
 
 **Mitigation**: per-language capability metadata (Phase 4); never present all languages as equally trustworthy;
 graceful degradation, not silent omission.

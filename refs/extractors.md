@@ -23,12 +23,13 @@ def:     /(?:export\s+)?(?:default\s+)?(?:async\s+)?(?:function|class|const|let|
 `externals`, and flattens `main`/`module`/`types`/`bin`/`exports` into `entrypoints`. Other ecosystems: `go.mod`,
 `Cargo.toml`, `requirements.txt`/`pyproject.toml` — same shape, add a parser per Phase 4.
 
-## tier 2 — tree-sitter (Phase 2, not shipped)
-For precise `calls` / `references` / `inherits` / `implements`:
-- One grammar per language; `tree-sitter` is error-recovery tolerant (parses half-edited files), but **recovery on
-  broken input produces structurally-valid garbage edges** — the worst failure mode for an impact tool (`RISKS.md` #2).
-- Gate deep extraction lazily: only parse the subtree around the node being edited.
-- Mark every tier-2 edge with provenance and prefer it over tier-0 for the same pair when both exist.
+## tier 2 — acorn AST (shipped, JS/TS)
+Precise `calls` / `references` / `inherits` / `implements` / `instantiates`, with cross-file resolution through
+named/default imports (`lib/ast.js`). Acorn is a pure-JS ESTree parser (zero native deps).
+- Error-recovery on broken input can produce structurally-valid garbage edges — the worst failure mode for an impact
+  tool (`RISKS.md` #2); `extractModule` returns `parseError: true` and degrades gracefully.
+- Deep extraction is lazy where possible; tier-2 edges are preferred over tier-0 for the same pair when both exist.
+- tree-sitter remains the planned multi-language backend (Phase 4) for languages acorn does not cover.
 
 ## tier 3 — LLM-inferred (Phase 3, see `templates/tier3-extract.md`)
 For implicit edges (DI registration, event listeners, dynamic dispatch, reflection). The LLM returns JSON edges with

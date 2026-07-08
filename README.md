@@ -45,11 +45,11 @@ A trellis is a lattice that makes the links between branches visible — you ins
 sever the wrong bond. A hand-tool metaphor for a coding craft.
 
 ## Roadmap (abbreviated)
-- **Phase 0** — precision study: does the reachability set actually improve edits? (de-risk before infra)
-- **Phase 1** ✅ — minimal graph-first skill (this release): in-memory, tier-0/1, one language, gate.
-- **Phase 2** — tree-sitter calls (symbol-level) + SQLite persistence + incremental sync.
-- **Phase 3** — semantic refinement: change-type, provenance, LLM implicit edges (tier 3), confidence.
-- **Phase 4** — language breadth + security hardening.
+- **Phase 0** ✅ — precision study (de-risk): reach recall 1.0, 1 adversarial false negative.
+- **Phase 1** ✅ — minimal graph-first skill: in-memory, tier-0/1, gate.
+- **Phase 2** ✅ — acorn AST calls (symbol-level) + SQLite persistence + incremental sync.
+- **Phase 3** ✅ — semantic refinement: change-type, provenance, LLM implicit edges (tier 3), confidence.
+- **Phase 4** ✅ — Python + security hardening + verify; PR-level impact.
 
 See `ARCHITECTURE.md` and `RISKS.md`.
 

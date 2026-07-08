@@ -20,11 +20,11 @@ graph from crying wolf on the most common edits.
 ### 2. provenance (where the edge came from)
 Every edge carries `tier` + `inferred`:
 - tier 0–1 (regex/manifest): syntactic, fast, over-/under-approximate.
-- tier 2 (tree-sitter): structural, trustworthy for the languages it covers.
+- tier 2 (acorn AST): structural, trustworthy for JS/TS.
 - tier 3 (LLM): `inferred: true`, lower trust, must carry `evidence`.
 - tier 4 (MCP): resolved, highest trust.
 
-The agent (and the user) can see *which* edges are guesses. "These 3 dependents are confirmed by tree-sitter; these
+The agent (and the user) can see *which* edges are guesses. "These 3 dependents are confirmed by acorn (AST); these
 2 are LLM-inferred — verify them."
 
 ### 3. confidence (the summary verdict)
