@@ -18,7 +18,7 @@ import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { buildGraph } from '../lib/extract.js';
 import { blastRadius } from '../lib/graph.js';
-import { gate, CHANGE } from '../lib/gate.js';
+import { gate } from '../lib/gate.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const CORPUS = join(HERE, '..', 'test', 'fixtures', 'corpus');
@@ -87,7 +87,7 @@ function avg(xs) { return xs.reduce((a, b) => a + b, 0) / (xs.length || 1); }
 
 const arg = process.argv[2];
 if (arg === '--json') {
-  main().then((r) => process.exit(0));
+  main().then(() => process.exit(0));
 } else {
   main().then((r) => {
     console.error('\n=== Phase 0 precision study ===');
