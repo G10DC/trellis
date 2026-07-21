@@ -1,6 +1,6 @@
 ---
 name: trellis
-description: Build a lightweight dependency graph of a codebase (tier-0 imports + tier-1 manifests + tier-2 acorn AST for symbol-level calls) and consult its bidirectional reachability BEFORE editing, so no dependent is missed. Returns a PASS/WARN/BLOCK verdict with confidence and change-type, never claiming reachability equals breakage. Graph-first, LLM-second — the model reasons over proven edges, never invents them. Use proactively before non-trivial edits on medium/large JS/TS codebases, and whenever a change touches shared or exported symbols.
+description: Build a lightweight dependency graph of a codebase (tier-0 imports + tier-1 manifests + tier-2 acorn AST for symbol-level calls) and consult its bidirectional reachability BEFORE editing, so no dependent is missed. Returns a PASS/WARN/BLOCK verdict with confidence and change-type, never claiming reachability equals breakage. Graph-first, processing engine-second — the model reasons over proven edges, never invents them. Use proactively before non-trivial edits on medium/large JS/TS codebases, and whenever a change touches shared or exported symbols.
 ---
 
 # Trellis
@@ -13,9 +13,9 @@ symbol without consulting its blast radius, and never trust the graph as proof o
 1. **Consult before you cut.** Run `impact` before editing any non-trivial or shared symbol. After the edit is too late.
 2. **Reachability ≠ breakage.** The graph lists who *could* be touched, not who *will* break. Signature-preserving
    semantic changes are invisible; renames over-report. Treat the verdict as triage, not proof.
-3. **Graph-first, LLM-second.** The model reasons over edges the extractor *proved*; it never invents edges or
+3. **Graph-first, processing engine-second.** The model reasons over edges the extractor *proved*; it never invents edges or
    impact sets.
-4. **Read the confidence.** tier-0/1 edges are syntactic; tier-3 edges are LLM-inferred and lower trust. Absence
+4. **Read the confidence.** tier-0/1 edges are syntactic; tier-3 edges are processing engine-inferred and lower trust. Absence
    of edges is not absence of dependents.
 5. **Act on the verdict, don't just collect it.** WARN/BLOCK ⇒ open the dependents and decide. PASS on a tier-0-only
    graph ⇒ still verify manually; the graph is incomplete.
@@ -48,8 +48,8 @@ A `BLOCK` is a strong suggestion to look before cutting — never a hard stop th
 Auxiliary scripts: `scripts/precision-study.mjs` (Phase 0 de-risk metrics). `lib/sync.js` `syncToSQLite` for incremental sync.
 
 ## Edge tiers & confidence
-`0` regex (imports) · `1` manifest (externals) · `2` acorn/AST — calls/refs/inheritance, cross-file ✅ · `3` LLM-inferred
-(DI/events/reflection) ✅ via `lib/llm-edges.js` · `4` MCP-resolved (optional). Edges carry `tier` + `inferred`;
+`0` regex (imports) · `1` manifest (externals) · `2` acorn/AST — calls/refs/inheritance, cross-file ✅ · `3` processing engine-inferred
+(DI/events/reflection) ✅ via `lib/model-edges.js` · `4` MCP-resolved (optional). Edges carry `tier` + `inferred`;
 the gate (`lib/gate.js`) + `lib/refine.js` lower confidence when inferred edges are in the blast.
 
 ## When NOT to use
@@ -71,5 +71,5 @@ the gate (`lib/gate.js`) + `lib/refine.js` lower confidence when inferred edges 
 Phases 0–5 complete (71 offline tests): tier-0/1/2 extraction (regex + manifest + acorn AST, JS/TS + Python),
 in-memory graph + SQLite persistence (`WITH RECURSIVE`), bidirectional reachability with depth/type filters,
 SCC condensation, bounded closure, memoized closure, PASS/WARN/BLOCK gate with confidence + change-type,
-semantic refinement, tier-3 LLM-edge merge, incremental sync via `git diff`, integrity check + rebuild,
-precision-study harness, PR-level impact. Graph-first/LLM-second; honest (reachability ≠ breakage).
+semantic refinement, tier-3 processing engine-edge merge, incremental sync via `git diff`, integrity check + rebuild,
+precision-study harness, PR-level impact. Graph-first/processing engine-second; honest (reachability ≠ breakage).

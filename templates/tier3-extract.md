@@ -1,4 +1,4 @@
-# Tier-3 edge extraction (LLM-inferred implicit dependencies) — Phase 3
+# Tier-3 edge extraction (processing engine-inferred implicit dependencies) — Phase 3
 
 Use when tier 0–2 cannot see an edge: dependency-injection registration, event-listener wiring, dynamic
 dispatch/overrides, convention-based routing, reflection/metaprogramming.
@@ -32,4 +32,4 @@ fix. No explanation.
 ## Integration note
 Edges returned here are merged into the graph with `tier: 3`. The gate (`lib/gate.js`) lowers `confidence` to `low`
 when tier-3 / `inferred` edges are in the blast radius, and the adversarial audit will single them out as
-"LLM-inferred — verify."
+"processing engine-inferred — verify."

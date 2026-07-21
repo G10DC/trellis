@@ -25,7 +25,7 @@ If unmitigated, Trellis cries wolf until the user disables it, and the graph bec
 - A **precision study** (Phase 0): measure recall/precision of the reachability set against a corpus of real edits
   *including the adversarial cases* before investing in infrastructure.
 - A **semantic-refinement layer** (Phase 3): change-type metadata attached to the triggering edit; provenance
-  (acorn vs LSP vs LLM) + confidence on every reported node; SCC condensation + depth-bounded closure.
+  (acorn vs LSP vs processing engine) + confidence on every reported node; SCC condensation + depth-bounded closure.
 
 ## #2 — Freshness / correctness drift (a single stale edge silently corrupts everything)
 Incremental update (Phase 2) is the linchpin and the fragility: one stale edge makes every downstream answer wrong,

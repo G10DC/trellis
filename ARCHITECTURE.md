@@ -7,7 +7,7 @@ reachability set and a triage verdict. The graph proves reachability; it never c
 
 ```mermaid
 flowchart TD
-  A[about to edit node X] --> B[extract: tier 0 regex / 1 manifest / 2 AST / 3 LLM]
+  A[about to edit node X] --> B[extract: tier 0 regex / 1 manifest / 2 AST / 3 processing engine]
   B --> G[(graph: nodes + typed edges, each tagged tier + inferred)]
   G --> R[reachability: shared bidirectional BFS]
   R --> BL[blast radius — reverse: who depends on X]
@@ -30,7 +30,7 @@ flowchart TD
 | `lib/graph.js` | pure graph model, shared `bfs`, reachability/blast/cascade, SCC, bounded closure, JSONL |
 | `lib/gate.js` | PASS/WARN/BLOCK verdict with confidence + change-type |
 | `lib/refine.js` | per-node confidence + risk ranking (the precision stage) |
-| `lib/llm-edges.js` | tier-3 edge merge with mandatory `evidence` validation |
+| `lib/model-edges.js` | tier-3 edge merge with mandatory `evidence` validation |
 | `lib/persist.js` | SQLite store + `WITH RECURSIVE` closure + integrity check |
 | `lib/sync.js` | incremental sync via `git diff` (strip + re-extract) |
 | `lib/security.js` | argument-array exec (no shell), path-traversal guard |
@@ -38,7 +38,7 @@ flowchart TD
 
 ## Edge tiers
 
-`0` regex · `1` manifest · `2` AST (acorn) · `3` LLM-inferred · `4` MCP-resolved.
+`0` regex · `1` manifest · `2` AST (acorn) · `3` processing engine-inferred · `4` MCP-resolved.
 
 Every edge carries `tier` + `inferred` + `evidence`; the gate lowers confidence when inferred edges
 are in the blast radius.

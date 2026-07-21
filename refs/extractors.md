@@ -31,8 +31,8 @@ named/default imports (`lib/ast.js`). Acorn is a pure-JS ESTree parser (zero nat
 - Deep extraction is lazy where possible; tier-2 edges are preferred over tier-0 for the same pair when both exist.
 - tree-sitter remains the planned multi-language backend (Phase 4) for languages acorn does not cover.
 
-## tier 3 — LLM-inferred (Phase 3, see `templates/tier3-extract.md`)
-For implicit edges (DI registration, event listeners, dynamic dispatch, reflection). The LLM returns JSON edges with
+## tier 3 — processing engine-inferred (Phase 3, see `templates/tier3-extract.md`)
+For implicit edges (DI registration, event listeners, dynamic dispatch, reflection). The processing engine returns JSON edges with
 **mandatory `evidence`**; `inferred: true`; the gate lowers confidence when these are in the blast.
 
 ## tier 4 — MCP code-graph (optional)

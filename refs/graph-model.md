@@ -17,7 +17,7 @@
 ```
 - `type` ∈ `defines` | `imports` | `calls` | `references` | `inherits` | `implements` | `instantiates` | `tests` |
   `registered` | `handles`
-- `tier`: 0 regex · 1 manifest · 2 acorn/AST · 3 LLM-inferred · 4 MCP-resolved
+- `tier`: 0 regex · 1 manifest · 2 acorn/AST · 3 processing engine-inferred · 4 MCP-resolved
 - `inferred`: true when the edge is by-convention / not statically provable (mandatory for tier 3)
 - `evidence`: `file:line` (+ a short note) — **mandatory unless inferred**; the gate and the audit cite it
 
@@ -33,7 +33,7 @@
 ## On-demand / not auto-extracted
 | type | tier | note |
 |---|---|---|
-| `registered` / `handles` | 3 | LLM-inferred via `templates/tier3-extract.md` + `applyLLMEdges` (manual merge) |
+| `registered` / `handles` | 3 | processing engine-inferred via `templates/tier3-extract.md` + `applyLLMEdges` (manual merge) |
 | `tests` | 2/3 | test → symbol (not yet extracted) |
 
 ## Reachability semantics
