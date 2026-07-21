@@ -1,7 +1,7 @@
 # Honesty layer
 
 The honesty layer is the feature that separates a tool the agent learns to ignore from one it relies on. It is the
-operational expression of the graph-first principle: **the LLM reasons over proven reachability with stated
+operational expression of the graph-first principle: **the processing engine reasons over proven reachability with stated
 confidence, never hallucinates impact.**
 
 ## Three dimensions on every answer
@@ -21,11 +21,11 @@ graph from crying wolf on the most common edits.
 Every edge carries `tier` + `inferred`:
 - tier 0–1 (regex/manifest): syntactic, fast, over-/under-approximate.
 - tier 2 (acorn AST): structural, trustworthy for JS/TS.
-- tier 3 (LLM): `inferred: true`, lower trust, must carry `evidence`.
+- tier 3 (processing engine): `inferred: true`, lower trust, must carry `evidence`.
 - tier 4 (MCP): resolved, highest trust.
 
 The agent (and the user) can see *which* edges are guesses. "These 3 dependents are confirmed by acorn (AST); these
-2 are LLM-inferred — verify them."
+2 are processing engine-inferred — verify them."
 
 ### 3. confidence (the summary verdict)
 Derived from the tiers of edges in the blast: `high` → `medium` → `low`. A `low`-confidence `BLOCK` means "many

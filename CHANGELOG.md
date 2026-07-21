@@ -10,7 +10,7 @@ All notable changes to this project are documented here. The format follows
   resolution through named/default imports.
 - SQLite persistence (`node:sqlite`) with `WITH RECURSIVE` transitive closure and an integrity check.
 - Incremental sync via `git diff`; security helpers (argument-array exec, path-traversal guard).
-- Semantic refinement: per-node confidence + change-type risk ranking; tier-3 LLM-edge merge with
+- Semantic refinement: per-node confidence + change-type risk ranking; tier-3 processing engine-edge merge with
   evidence validation.
 - SCC condensation, bounded closure with truncation reporting, memoized reachability.
 - Python tier-0 extraction; per-language capability metadata and trust gradient.

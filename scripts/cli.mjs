@@ -128,7 +128,7 @@ async function prCmd({ flags, pos }) {
   r.toTest.forEach((s) => console.log(`  ? ${s}`));
 }
 
-const HELP = `trellis — dependency graph + pre-edit blast radius (graph-first, LLM-second)
+const HELP = `trellis — dependency graph + pre-edit blast radius (graph-first, processing engine-second)
 
 commands:
   impact <root> <node> [--depth N] [--change body-only|signature|rename|add|delete] [--full]

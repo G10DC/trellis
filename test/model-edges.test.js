@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import { strictEqual, ok } from 'node:assert';
 import { createGraph, addNode, blastRadius } from '../lib/graph.js';
-import { applyLLMEdges } from '../lib/llm-edges.js';
+import { applyLLMEdges } from '../lib/model-edges.js';
 
 test('applyLLMEdges accepts well-formed edges with evidence (tier 3, inferred true)', () => {
   const g = createGraph();

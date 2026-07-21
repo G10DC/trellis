@@ -2,10 +2,10 @@
 
 > See the lattice before you cut.
 
-A Claude Code skill that builds a **dependency graph** of a codebase and answers **"what breaks if I change this?"**
+A Agent skill that builds a **dependency graph** of a codebase and answers **"what breaks if I change this?"**
 *before* you edit — so no dependent is missed on medium/large codebases.
 
-Trellis is **graph-first, LLM-second**: the model reasons over edges the extractor *proved*; it never invents edges
+Trellis is **graph-first, processing engine-second**: the model reasons over edges the extractor *proved*; it never invents edges
 or impact sets. And it is **honest**: it never claims its reachability set is a proven breakage set (the trap every
 existing tool in this space falls into — see `RISKS.md`).
 
@@ -48,7 +48,7 @@ sever the wrong bond. A hand-tool metaphor for a coding craft.
 - **Phase 0** ✅ — precision study (de-risk): reach recall 1.0, 1 adversarial false negative.
 - **Phase 1** ✅ — minimal graph-first skill: in-memory, tier-0/1, gate.
 - **Phase 2** ✅ — acorn AST calls (symbol-level) + SQLite persistence + incremental sync.
-- **Phase 3** ✅ — semantic refinement: change-type, provenance, LLM implicit edges (tier 3), confidence.
+- **Phase 3** ✅ — semantic refinement: change-type, provenance, processing engine implicit edges (tier 3), confidence.
 - **Phase 4** ✅ — Python + security hardening + verify; PR-level impact.
 
 See `ARCHITECTURE.md` and `RISKS.md`.
