@@ -73,3 +73,13 @@ in-memory graph + SQLite persistence (`WITH RECURSIVE`), bidirectional reachabil
 SCC condensation, bounded closure, memoized closure, PASS/WARN/BLOCK gate with confidence + change-type,
 semantic refinement, tier-3 processing engine-edge merge, incremental sync via `git diff`, integrity check + rebuild,
 precision-study harness, PR-level impact. Graph-first/processing engine-second; honest (reachability ≠ breakage).
+
+
+---
+
+## ⚡ Spark Breakthrough Enhancement
+
+- **Feature**: **Bidirectional Symbol Impact Predictor**
+- **Description**: Evaluates dependency reachability before making code edits.
+- **Synergy**: Integrated with `smith` (AST edit) & `archaeologist` (hotspots).
+- **Framework**: Applied via the `spark` 4-Lens Lateral Ideation Engine.
