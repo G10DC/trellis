@@ -2,7 +2,7 @@
 
 > See the lattice before you cut.
 
-A Agent skill that builds a **dependency graph** of a codebase and answers **"what breaks if I change this?"**
+an agent skill that builds a **dependency graph** of a codebase and answers **"what breaks if I change this?"**
 *before* you edit — so no dependent is missed on medium/large codebases.
 
 Trellis is **graph-first, processing engine-second**: the model reasons over edges the extractor *proved*; it never invents edges
