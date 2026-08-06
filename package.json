@@ -2,7 +2,7 @@
   "name": "trellis",
   "version": "0.2.0",
   "type": "module",
-  "description": "Agent skill: dependency graph + pre-edit blast radius. Graph-first, processing engine-second; reachability, not breakage \u2014 honestly.",
+  "description": "Agent skill: dependency graph + pre-edit blast radius. Graph-first, processing engine-second; reachability, not breakage — honestly.",
   "license": "MIT",
   "scripts": {
     "test": "node --test test/*.test.js tests/*.test.js || true",
