@@ -77,9 +77,14 @@ precision-study harness, PR-level impact. Graph-first/processing engine-second; 
 
 ---
 
-## ⚡ Spark Breakthrough Enhancement
+## Spark Breakthrough Enhancement
 
 - **Feature**: **Bidirectional Symbol Impact Predictor**
 - **Description**: Evaluates dependency reachability before making code edits.
 - **Synergy**: Integrated with `smith` (AST edit) & `archaeologist` (hotspots).
 - **Framework**: Applied via the `spark` 4-Lens Lateral Ideation Engine.
+
+
+## When to use
+
+- Primary domain workflow execution as specified in frontmatter description.
