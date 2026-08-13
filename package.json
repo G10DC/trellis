@@ -2,10 +2,10 @@
   "name": "trellis",
   "version": "0.2.0",
   "type": "module",
-  "description": "Agent skill: dependency graph + pre-edit blast radius. Graph-first, processing engine-second; reachability, not breakage — honestly.",
+  "description": "Agent skill: dependency graph + pre-edit blast radius. Graph-first, LLM-second; reachability, not breakage — honestly.",
   "license": "MIT",
   "scripts": {
-    "test": "node --test test/*.test.js tests/*.test.js || true",
+    "test": "node --test \"test/**/*.test.{js,mjs,cjs}\" \"tests/**/*.test.{js,mjs,cjs}\"",
     "smoke": "node scripts/cli.mjs",
     "precision": "node scripts/precision-study.mjs",
     "verify": "node scripts/verify.mjs",
@@ -17,5 +17,8 @@
   },
   "dependencies": {
     "acorn": "^8.17.0"
+  },
+  "engines": {
+    "node": ">=22.5.0"
   }
 }

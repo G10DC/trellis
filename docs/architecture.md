@@ -7,7 +7,7 @@ reachability set and a triage verdict. The graph proves reachability; it never c
 
 ```mermaid
 flowchart TD
-  A[about to edit node X] --> B[extract: tier 0 regex / 1 manifest / 2 AST / 3 processing engine]
+  A[about to edit node X] --> B[extract: tier 0 regex / 1 manifest / 2 AST / 3 LLM]
   B --> G[(graph: nodes + typed edges, each tagged tier + inferred)]
   G --> R[reachability: shared bidirectional BFS]
   R --> BL[blast radius — reverse: who depends on X]
@@ -38,7 +38,7 @@ flowchart TD
 
 ## Edge tiers
 
-`0` regex · `1` manifest · `2` AST (acorn) · `3` processing engine-inferred · `4` MCP-resolved.
+`0` regex · `1` manifest · `2` AST (acorn) · `3` LLM-inferred · `4` MCP-resolved.
 
 Every edge carries `tier` + `inferred` + `evidence`; the gate lowers confidence when inferred edges
 are in the blast radius.
