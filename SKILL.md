@@ -67,3 +67,15 @@ Phases 0–5 complete (71 offline tests): tier-0/1/2 extraction (regex + manifes
   codebase, to see who could be affected before you cut.
 - Localizing "where is X" via `locate`, or generating a PR-level impact summary via `pr` from a
   git diff.
+
+## An integrity check over an empty graph
+
+`integrityCheck(dbPath)` reports `checked` (edges examined), `measured` (false when
+none), `existed` (whether the file was there before the call) and an `honest` line.
+`ok` keeps its meaning — no dangling edges found — so existing callers are unaffected;
+`measured` is the field that separates "nothing wrong" from "nothing".
+
+It used to return `{ ok: true, dangling: [] }` for any path at all, because
+`DatabaseSync` creates the file and `ensureSchema` fills in empty tables. A caller
+pointed at the wrong path received a clean bill of health for a database it had never
+read.
